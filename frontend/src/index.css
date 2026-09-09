@@ -1,0 +1,85 @@
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.sleeve-root {
+  font-family: "IBM Plex Mono", monospace;
+  color: #201d18;
+  min-height: 100vh;
+}
+
+.sleeve-display { font-family: "Fraunces", serif; }
+
+.sleeve-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
+.sleeve-scroll::-webkit-scrollbar-thumb { background: #cbc0a8; border-radius: 3px; }
+
+input, select, textarea, button { font-family: "IBM Plex Mono", monospace; }
+input:focus, select:focus, textarea:focus, button:focus-visible {
+  outline: 2px solid #201d18;
+  outline-offset: 1px;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in { animation: riseIn 0.35s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in { animation: none; }
+}
+
+.spine:hover .spine-preview {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* --- minimal layout utilities used throughout the app --- */
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.wrap { flex-wrap: wrap; }
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.flex-1 { flex: 1; }
+.between { justify-content: space-between; }
+.center { justify-content: center; }
+.grid-auto {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.btn {
+  border: none;
+  cursor: pointer;
+  background: #201d18;
+  color: #ede6d6;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn-outline {
+  border: 1px solid #201d18;
+  background: transparent;
+  color: #201d18;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+.btn-text {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.input {
+  border: 1px solid #cbc0a8;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+}
+.muted { color: #8b8272; }
+.field-label { display: block; font-size: 11px; color: #8b8272; margin-bottom: 4px; }
