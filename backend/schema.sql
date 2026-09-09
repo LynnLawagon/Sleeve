@@ -67,3 +67,4 @@ CREATE TABLE IF NOT EXISTS wishlist (
   KEY idx_wishlist_user (user_id),
   CONSTRAINT fk_wishlist_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+sleeve
