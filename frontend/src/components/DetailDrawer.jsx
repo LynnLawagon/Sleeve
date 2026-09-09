@@ -1,3 +1,4 @@
+// frontend/src/components/DetailDrawer.jsx  
 import { useState } from "react";
 import { X, Heart, Pencil, Trash2, Share2, Copy, Check, Music } from "lucide-react";
 import { C, formatColor } from "../constants";

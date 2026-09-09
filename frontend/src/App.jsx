@@ -1,3 +1,4 @@
+// frontend/src/App.jsx  
 import { useState, useEffect } from "react";
 import { LogOut } from "lucide-react";
 import { C } from "./constants";
@@ -115,6 +116,9 @@ export default function App() {
 
   if (checkingSession) return null;
 
+  const knownArtists = [...new Set([...library, ...wishlist].map((i) => i.artist).filter(Boolean))].sort();
+  const knownGenres = [...new Set(library.flatMap((i) => i.tags || []))].sort();
+
   if (!user) {
     return (
       <div className="sleeve-root">
@@ -191,6 +195,8 @@ export default function App() {
           onClose={() => setModal(null)}
           onSave={saveItem}
           duplicateCheck={modal.mode === "wishlist" ? wishlistDuplicateCheck : duplicateCheck}
+          knownArtists={knownArtists}
+          knownGenres={knownGenres}
         />
       )}
 
@@ -203,7 +209,7 @@ export default function App() {
               mode: detailWishlist ? "wishlist" : "library",
               initial: {
                 ...detail,
-                tags: (detail.tags || []).join(", "),
+                tags: detail.tags || [],
                 recommendedTracks: (detail.recommendedTracks || []).join(", "),
               },
             });
